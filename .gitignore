@@ -1,2 +1,4 @@
 .idea/
 road_signs_maintenance/__pycache__/
+__pycache__/
+road_signs_repair/__pycache__/
