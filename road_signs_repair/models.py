@@ -42,6 +42,14 @@ class RoadSign(models.Model):
     description = models.TextField(max_length=500,
                                    help_text="Enter a description of the road signs")
 
+    def __str__(self):
+        return f"{self.series} - {self.name}"
+
+    class Meta:
+        permissions = ()
+        ordering = ['series']
+        verbose_name_plural = 'Road signs'
+
 
 class RoadSignsForRepair(models.Model):
     region = models.ForeignKey(to=Region,
@@ -81,5 +89,6 @@ class RoadSignsForRepair(models.Model):
     class Meta:
         permissions = ()
         ordering = ['region', 'locality']
+        verbose_name_plural = 'road signs for repair'
 
 # TODO: Add permissions to Meta in all Classes
