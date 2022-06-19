@@ -22,7 +22,7 @@ class Locality(models.Model):
                             help_text="Enter the name of locality where there may be road sign",
                             verbose_name='localities')
     region = models.ForeignKey(to=Region,
-                               on_delete=models.RESTRICT,
+                               on_delete=models.SET_NULL,
                                null=True)
 
     def __str__(self):
@@ -53,13 +53,13 @@ class RoadSign(models.Model):
 
 class RoadSignsForRepair(models.Model):
     region = models.ForeignKey(to=Region,
-                               on_delete=models.RESTRICT,
+                               on_delete=models.SET_NULL,
                                null=True)
     locality = models.ForeignKey(to=Locality,
-                                 on_delete=models.RESTRICT,
+                                 on_delete=models.SET_NULL,
                                  null=True)
     sign = models.ForeignKey(to=RoadSign,
-                             on_delete=models.RESTRICT,
+                             on_delete=models.SET_NULL,
                              null=True)
     description_of_the_place = models.TextField(max_length=500,
                                                 help_text="Enter a description of the place where road signs is to repair")
