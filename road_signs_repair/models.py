@@ -15,6 +15,7 @@ class Region(models.Model):
         permissions = ()
         ordering = ['name']
         verbose_name_plural = 'names'
+        db_table = 'region'
 
 
 class Locality(models.Model):
@@ -32,6 +33,7 @@ class Locality(models.Model):
         permissions = ()
         ordering = ['name']
         verbose_name_plural = 'localities'
+        db_table = 'locality'
 
 
 class RoadSign(models.Model):
@@ -49,6 +51,7 @@ class RoadSign(models.Model):
         permissions = ()
         ordering = ['series']
         verbose_name_plural = 'Road signs'
+        db_table = 'road_sign'
 
 
 class RoadSignsForRepair(models.Model):
@@ -90,5 +93,6 @@ class RoadSignsForRepair(models.Model):
         permissions = ()
         ordering = ['region', 'locality']
         verbose_name_plural = 'road signs for repair'
+        db_table = 'road_signs_for_repair'
 
 # TODO: Add permissions to Meta in all Classes
