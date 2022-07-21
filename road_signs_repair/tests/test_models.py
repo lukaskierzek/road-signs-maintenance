@@ -16,6 +16,9 @@ class RegionTestCase(TestCase):
 
     def setUp(self) -> None:
         Region.objects.create(name="Oswiecim city")
+        Region.objects.create(name="""
+        A very long name of region A very long name of region A very long name of region A very long name of region 
+        """)
 
     def tearDown(self) -> None:
         pass
@@ -24,6 +27,12 @@ class RegionTestCase(TestCase):
         region = Region.objects.get(id=1)
         max_length = region._meta.get_field('name').max_length
         self.assertEqual(max_length, 100)
+
+    def test_name_greater_than_max_length(self):
+        region = Region.objects.get(id=2)
+        name_length = len(region.name)
+        max_length = region._meta.get_field('name').max_length
+        self.assertGreater(name_length, max_length)
 
     def test_help_text_label(self):
         region = Region.objects.get(id=1)
