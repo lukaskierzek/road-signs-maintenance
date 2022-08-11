@@ -44,7 +44,7 @@ class RegionTestCase(TestCase):
         self.assertEqual(str_region_name, expected_object_name)
 
     def test_verbose_name_label(self):
-        verbose_name = 'names'
+        verbose_name = 'Region name'
         expected_verbose_name = self.region._meta.get_field('name').verbose_name
         self.assertEqual(verbose_name, expected_verbose_name)
 
@@ -54,7 +54,7 @@ class RegionTestCase(TestCase):
         self.assertEqual(ordering, expected_ordering)
 
     def test_verbose_name_plural_meta_class(self):
-        verbose_name_plural = 'names'
+        verbose_name_plural = 'Regions'
         expected_verbose_name_plural = self.region._meta.verbose_name_plural
         self.assertEqual(verbose_name_plural, expected_verbose_name_plural)
 
@@ -94,7 +94,7 @@ class LocalityTestCase(TestCase):
 
     def test_verbose_name_label(self):
         verbose_name = self.locality._meta.get_field('name').verbose_name
-        expected_verbose_name = 'localities'
+        expected_verbose_name = 'Locality name'
         self.assertEqual(verbose_name, expected_verbose_name)
 
     def test_object_name_is_name(self):
