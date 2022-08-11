@@ -6,7 +6,7 @@ from django.db import models
 class Region(models.Model):
     name = models.CharField(max_length=100,
                             help_text="Enter the name of the region where there may be road signs",
-                            verbose_name='names')
+                            verbose_name='Region name')
 
     def __str__(self):
         return self.name
@@ -14,14 +14,14 @@ class Region(models.Model):
     class Meta:
         permissions = ()
         ordering = ['name']
-        verbose_name_plural = 'names'
+        verbose_name_plural = 'Regions'
         db_table = 'region'
 
 
 class Locality(models.Model):
     name = models.CharField(max_length=100,
                             help_text="Enter the name of locality where there may be road sign",
-                            verbose_name='localities')
+                            verbose_name='Locality name')
     region = models.ForeignKey(to=Region,
                                on_delete=models.SET_NULL,
                                null=True)
@@ -45,7 +45,7 @@ class RoadSign(models.Model):
                                    help_text="Enter a description of the road signs")
 
     def __str__(self):
-        return f"{self.series} - {self.name}"
+        return f"{self.series}"
 
     class Meta:
         permissions = ()
@@ -88,6 +88,9 @@ class RoadSignsForRepair(models.Model):
                             choices=MODE_CATEGORIES,
                             default='standard',
                             help_text='Select a mode')
+
+    def __str__(self):
+        return f"{self.region} - {self.locality} - {self.sign} - {self.task}"
 
     class Meta:
         permissions = ()
