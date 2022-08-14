@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -10,6 +11,11 @@ class Region(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('road_signs_repair:region', kwargs={
+            'pk': self.id,
+        })
 
     class Meta:
         permissions = ()
