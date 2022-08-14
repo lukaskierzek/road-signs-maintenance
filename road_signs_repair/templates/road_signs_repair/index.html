@@ -1,0 +1,37 @@
+{% extends "road_signs_repair/base.html" %}
+
+{% block title %}Road{% endblock %}
+
+{% block content %}
+  <h1>Road signs for repair</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Region</th>
+        <th>Locality</th>
+        <th>sign</th>
+        <th>Description of the place</th>
+        <th>Task</th>
+        <th>Report date</th>
+        <th>Repair date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for road_signs in road_signs_for_repairr %}
+        <tr>
+          <th>{{ road_signs.region.name }} <a href="{{ road_signs.region.get_absolute_url }}">details</a></th>
+          <th>{{ road_signs.locality.name }}</th>
+          <th>{{ road_signs.sign.series }}</th>
+          <th>{{ road_signs.description_of_the_place }}</th>
+          <th>{{ road_signs.task }}</th>
+          <th>{{ road_signs.repair_date }}</th>
+          <th>{{ road_signs.repair_date }}</th>
+        </tr>
+      {% empty %}
+        <tr>
+          <th colspan="7"><span class="error_message">Sorry, there are no signs for repair</span></th>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "road_signs_repair/base.html" %}
+
+{% block title %}Region detail{% endblock %}
+
+{% block content %}
+  <h1>Region detail</h1>
+  <p>{{ region.name }}</p>
+  <a href="{% url 'road_signs_repair:road_signs_for_repair' %}">Return to main page</a>
+{% endblock %}
