@@ -100,7 +100,7 @@ class RoadSignsForRepair(models.Model):
 
     class Meta:
         permissions = ()
-        ordering = ['region', 'locality']
+        ordering = ['report_date', 'repair_date']
         verbose_name_plural = 'road signs for repair'
         db_table = 'road_signs_for_repair'
 
