@@ -12,6 +12,7 @@
         <th>sign</th>
         <th>Description of the place</th>
         <th>Task</th>
+        <th>Mode</th>
         <th>Report date</th>
         <th>Repair date</th>
       </tr>
@@ -24,6 +25,7 @@
           <th>{{ road_signs.sign.series }}</th>
           <th>{{ road_signs.description_of_the_place }}</th>
           <th>{{ road_signs.task }}</th>
+          <th class="{% if road_signs.mode == 'S' %}text-success{% elif road_signs.mode == 'P' %}text-danger{% endif %}">{{ road_signs.get_mode_display }}</th>
           <th>{{ road_signs.report_date }}</th>
           <th>{{ road_signs.repair_date }}</th>
         </tr>

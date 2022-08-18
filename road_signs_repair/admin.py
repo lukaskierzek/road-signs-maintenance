@@ -32,7 +32,12 @@ class RoadSignsForRepairInline(admin.TabularInline):
 @admin.register(Locality)
 class LocalityAdmin(admin.ModelAdmin):
     list_display = ("__str__",
-                    "region",)
+                    "region",
+                    "slug",)
+
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
 
     list_filter = ("region",)
 
@@ -42,7 +47,7 @@ class LocalityAdmin(admin.ModelAdmin):
     ]
 
     fieldsets = [
-        (None, {'fields': ['name']}),
+        (None, {'fields': ['name', 'slug']}),
         ('Region', {'fields': ['region']}),
     ]
 
@@ -53,7 +58,12 @@ class LocalityAdmin(admin.ModelAdmin):
 class RoadSignAdmin(admin.ModelAdmin):
     list_display = ("__str__",
                     "name",
-                    "description")
+                    "description",
+                    "slug",)
+
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
 
     list_filter = ("series",)
 
@@ -93,6 +103,13 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
 
 @admin.register(Region)
 class RegionAdmin(admin.ModelAdmin):
+    list_display = ("__str__",
+                    "slug",)
+
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
+
     list_filter = ("name",)
 
     search_fields = ["name", ]

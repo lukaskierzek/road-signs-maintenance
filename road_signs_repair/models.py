@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -8,13 +9,20 @@ class Region(models.Model):
     name = models.CharField(max_length=100,
                             help_text="Enter the name of the region where there may be road signs",
                             verbose_name='Region name')
+    slug = models.SlugField(null=True,
+                            unique=True)
 
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse('road_signs_repair:region', kwargs={
-            'pk': self.id,
+            'slug': self.slug,
         })
 
     class Meta:
@@ -31,9 +39,19 @@ class Locality(models.Model):
     region = models.ForeignKey(to=Region,
                                on_delete=models.SET_NULL,
                                null=True)
+    slug = models.SlugField(null=True,
+                            unique=True)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    # def get_absolute_url(self):
+    #     return reverse('')
 
     class Meta:
         permissions = ()
@@ -49,9 +67,16 @@ class RoadSign(models.Model):
                             help_text="Enter a name of road sign")
     description = models.TextField(max_length=500,
                                    help_text="Enter a description of the road signs")
+    slug = models.SlugField(null=True,
+                            unique=True)
 
     def __str__(self):
         return f"{self.series}"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.series)
+        super().save(*args, **kwargs)
 
     class Meta:
         permissions = ()
