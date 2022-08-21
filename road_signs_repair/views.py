@@ -10,6 +10,12 @@ class RoadSignsForRepairListView(generic.ListView):
     template_name = 'road_signs_repair/index.html'
 
 
+class RoadSignsForRepairDetailView(generic.DetailView):
+    model = RoadSignsForRepair
+    context_object_name = 'road_signs_for_repair_detail'
+    template_name = 'road_signs_repair/road_signs_for_repair_detail.html'
+
+
 class RegionDetailView(generic.DetailView):
     model = Region
     context_object_name = 'region'
