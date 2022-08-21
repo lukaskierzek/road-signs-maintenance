@@ -123,6 +123,14 @@ class RoadSignsForRepair(models.Model):
     def __str__(self):
         return f"{self.region} - {self.locality} - {self.sign} - {self.task}"
 
+    def print_title(self):
+        return self.__str__()
+
+    def get_absolute_url(self):
+        return reverse('road_signs_repair:road_signs_for_repair_detail', kwargs={
+            'pk': self.id,
+        })
+
     class Meta:
         permissions = ()
         ordering = ['report_date', 'repair_date']
