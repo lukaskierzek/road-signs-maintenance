@@ -2,8 +2,9 @@
 
 {% block title %}Region detail - {{ region.name }}{% endblock %}
 
+{% block header %}{{ region.name }}{% endblock %}
+
 {% block content %}
-  <h1>Region detail</h1>
   <p>{{ region.name }}</p>
   <a href="{% url 'road_signs_repair:road_signs_for_repair' %}">Return to main page</a>
 {% endblock %}
