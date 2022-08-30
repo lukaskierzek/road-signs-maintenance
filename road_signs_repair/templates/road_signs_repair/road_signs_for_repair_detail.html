@@ -2,7 +2,9 @@
 
 {% block title %}{{ road_signs_for_repair_detail.print_title }}{% endblock %}
 
+{% block header %}{{ road_signs_for_repair_detail.print_title }}{% endblock %}
+
 {% block content %}
-  <h1>hello {{ road_signs_for_repair_detail.print_title }}!</h1>
+  <p>{{ road_signs_for_repair_detail.description_of_the_place }}</p>
   <a href="{% url 'road_signs_repair:road_signs_for_repair' %}">Return to main page</a>
 {% endblock %}
