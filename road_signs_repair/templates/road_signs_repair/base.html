@@ -17,18 +17,26 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h1>{% block header %}{% endblock %}</h1>
+          <header>
+            <h1>{% block header %}{% endblock %}</h1>
+          </header>
         </div>
         <div class="col-md-8 pt-2">
-          <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
-          <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
-          <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
-          <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
+          <nav>
+            <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
+            <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
+            <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
+            <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
+          </nav>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          {% block content %}{% endblock %}
+          <main>
+            <section>
+              {% block content %}{% endblock %}
+            </section>
+          </main>
         </div>
       </div>
     </div>
