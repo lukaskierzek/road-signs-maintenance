@@ -21,7 +21,7 @@
     <tbody>
       {% for road_signs in road_signs_for_repair %}
         <tr>
-          <th>{{ road_signs.region.name }} <a href="{{ road_signs.region.get_absolute_url }}">Region details</a> <a href="{{ road_signs.get_absolute_url }}">Task info</a></th>
+          <th>{{ road_signs.region.name }}</th>
           <th>{{ road_signs.locality.name }}</th>
           <th>{{ road_signs.sign.series }}</th>
           <th>{{ road_signs.description_of_the_place }}</th>
