@@ -1,8 +1,12 @@
 {% extends "road_signs_repair/base.html" %}
 
-{% block title %}{{ road_signs_for_repair_detail.print_title }}{% endblock %}
+{% block title %}
+  {{ road_signs_for_repair_detail.print_title }}
+{% endblock %}
 
-{% block header %}{{ road_signs_for_repair_detail.print_title }}{% endblock %}
+{% block header %}
+  {{ road_signs_for_repair_detail.print_title }}
+{% endblock %}
 
 {% block content %}
   <p>{{ road_signs_for_repair_detail.description_of_the_place }}</p>
