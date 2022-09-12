@@ -19,23 +19,16 @@
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed, please login with an account that as access.</p>
+      <p>Your account doesn't have access to this page. To proceed, please Sign in with an account that as access.</p>
     {% else %}
-      <p>Please login to see this page.</p>
+      <p>Please Sign in to see this page.</p>
     {% endif %}
   {% endif %}
 
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
+      {{ form.as_table }}
     </table>
     <input type="submit" value="login">
     <input type="hidden" name="next" value="{{ next }}">
