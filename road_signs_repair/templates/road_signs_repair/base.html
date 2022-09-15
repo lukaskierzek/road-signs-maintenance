@@ -29,16 +29,7 @@
         </div>
         <div class="col-md-8 pt-2">
           <nav>
-            {% block navigation_bar %}
-              {% if user.is_authenticated %}
-                <a class="btn btn-outline-primary" href="{% url 'logout' %}" role="button">Sign out</a>
-                <a class="btn btn-outline-primary" href="#" role="button">My profile</a>
-              {% else %}
-                <a class="btn btn-outline-primary" href="{% url 'login' %}" role="button">Sign in</a>
-              {% endif %}
-              <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
-              <a class="btn btn-outline-primary" href="#" role="button">{% lorem w random %}</a>
-            {% endblock %}
+            {% block navigation_bar %}{% endblock %}
           </nav>
         </div>
       </div>
