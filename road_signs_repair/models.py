@@ -132,8 +132,11 @@ class RoadSignsForRepair(models.Model):
         })
 
     class Meta:
-        permissions = ()
-        ordering = ['report_date', 'repair_date']
+        permissions = (
+            ('can_update_task', 'Update task'),
+            ('can_mark_done_task', 'Set the task as completed'),
+        )
+        ordering = ['mode', 'report_date', 'repair_date']
         verbose_name_plural = 'road signs for repair'
         db_table = 'road_signs_for_repair'
 
