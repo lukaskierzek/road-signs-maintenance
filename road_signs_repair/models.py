@@ -121,7 +121,7 @@ class RoadSignsForRepair(models.Model):
                             help_text='Select a mode')
 
     def __str__(self):
-        return f"{self.region} - {self.locality} - {self.sign} - {self.task}"
+        return f"{self.region} | {self.locality} | {self.sign} | {self.task}"
 
     def print_title(self):
         return self.__str__()
