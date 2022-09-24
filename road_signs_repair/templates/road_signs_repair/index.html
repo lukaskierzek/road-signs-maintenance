@@ -42,12 +42,15 @@
           <td>{{ road_signs.report_date }}</td>
           <td>{{ road_signs.repair_date }}</td>
           <td>
-            {% if perms.road_signs_repair.can_update_task %}
-            <a href="{{ road_signs.get_absolute_url }}">Task details</a>
-            {% endif %}
-            {% if perms.road_signs_repair.can_mark_done_task %}
-              <a href="#can_mark_done_task">Complete task</a>
-            {% endif %}
+            <ul>
+              <li><a href="{{ road_signs.get_absolute_url }}">Task detail</a></li>
+              {% if perms.road_signs_repair.can_update_task %}
+                <li><a href="{% url 'road_signs_repair:road_signs_for_repair_update' pk=road_signs.id %}">Edit task</a></li>
+              {% endif %}
+            </ul>
+{#            {% if perms.road_signs_repair.can_mark_done_task %}#}
+{#              <a href="#can_mark_done_task">Complete task</a>#}
+{#            {% endif %}#}
           </td>
         </tr>
       {% empty %}
