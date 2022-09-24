@@ -32,7 +32,10 @@
         </div>
         <div class="col-md-6">
           <nav>
-            {% block navigation_bar %}{% endblock %}
+            {% block navigation_bar %}
+              <a class="btn btn-outline-primary" href="{% url 'logout' %}?next={% url 'login' %}" role="button">Sign out</a>
+              <a class="btn btn-outline-primary" href="{% url 'road_signs_repair:road_signs_for_repair' %}" role="button">Return to main page</a>
+            {% endblock %}
           </nav>
         </div>
       </div>
