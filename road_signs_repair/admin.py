@@ -24,6 +24,7 @@ class RoadSignsForRepairInline(admin.TabularInline):
         "sign",
         "description_of_the_place",
         "task",
+        "mode",
         "report_date",
         "repair_date",
     ]
@@ -84,6 +85,7 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
                     "sign",
                     "description_of_the_place",
                     "task",
+                    "mode",
                     "report_date",
                     "repair_date",)
 
@@ -91,6 +93,7 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
                    "locality",
                    "sign",
                    "task",
+                   "mode",
                    "report_date",
                    "repair_date",)
 
@@ -98,6 +101,7 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
         "description_of_the_place",
         "region",
         "sign",
+        "mode",
     ]
 
 
