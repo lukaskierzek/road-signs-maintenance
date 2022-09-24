@@ -8,11 +8,34 @@
   {{ road_signs_for_repair_detail.print_title }}
 {% endblock %}
 
-{% block navigation_bar %}
-  <a class="btn btn-outline-primary" href="{% url 'logout' %}?next={% url 'login' %}" role="button">Sign out</a>
-  <a class="btn btn-outline-primary" href="{% url 'road_signs_repair:road_signs_for_repair' %}" role="button">Return to main page</a>
-{% endblock %}
-
 {% block content %}
-  <p>{{ road_signs_for_repair_detail.description_of_the_place }}</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Region</th>
+        <th>Locality</th>
+        <th>sign</th>
+        <th>Description of the place</th>
+        <th>Task</th>
+        <th>Mode</th>
+        <th>Report date</th>
+        <th>Repair date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ road_signs_for_repair_detail.region }}</td>
+        <td>{{ road_signs_for_repair_detail.locality }}</td>
+        <td>{{ road_signs_for_repair_detail.sign }}</td>
+        <td>{{ road_signs_for_repair_detail.description_of_the_place }}</td>
+        <td>{{ road_signs_for_repair_detail.task }}</td>
+        <td>{{ road_signs_for_repair_detail.get_mode_display }}</td>
+        <td>{{ road_signs_for_repair_detail.report_date }}</td>
+        <td>{{ road_signs_for_repair_detail.repair_date }}</td>
+      </tr>
+    </tbody>
+  </table>
+  {% if perms.road_signs_repair.can_update_task %}
+    <a class="btn btn-outline-primary" href="{% url 'road_signs_repair:road_signs_for_repair_update' pk=road_signs_for_repair_detail.id %}">Edit task</a>
+  {% endif %}
 {% endblock %}
