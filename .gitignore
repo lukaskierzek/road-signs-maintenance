@@ -1,5 +1,10 @@
+# IDE files
 .idea/
 
+# Project directories
 __pycache__/
 road_signs_repair/__pycache__/
 road_signs_maintenance/__pycache__/
+
+# Project files
+db.sqlite3
