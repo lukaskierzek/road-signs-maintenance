@@ -8,3 +8,5 @@ road_signs_maintenance/__pycache__/
 
 # Project files
 db.sqlite3
+Pipfile
+Pipfile.lock
