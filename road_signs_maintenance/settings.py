@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'road_signs_repair.apps.RoadSignsRepairConfig',
+    # 'road_signs_repair.apps.RoadSignsRepairConfig',
+    'rest_framework',
+    'rsm_api.apps.RsmApiConfig',
 ]
 
 MIDDLEWARE = [
