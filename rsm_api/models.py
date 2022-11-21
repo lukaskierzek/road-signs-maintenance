@@ -31,8 +31,11 @@ class RoadSign(models.Model):
     name = models.CharField(max_length=50,
                             help_text="Enter a name of road sign")
 
-    description = models.CharField(max_length=500,
+    description = models.TextField(max_length=500,
                                    help_text="Enter a description of the road signs")
+
+    def __str__(self):
+        return self.series
 
 
 class RoadSignsForRepair(models.Model):
@@ -48,7 +51,7 @@ class RoadSignsForRepair(models.Model):
                              on_delete=models.SET_NULL,
                              null=True)
 
-    description_of_the_place = models.CharField(max_length=500,
+    description_of_the_place = models.TextField(max_length=500,
                                                 help_text="Enter a description of the place where road signs is to repair")
 
     task = models.CharField(max_length=255,
@@ -57,3 +60,23 @@ class RoadSignsForRepair(models.Model):
     report_date = models.DateField()
 
     repair_date = models.DateField()
+
+    MODE_CATEGORIES = [
+        (
+            'standard', (
+                ('S', 'STANDARD'),
+            )
+        ),
+        (
+            'priority', (
+                ('P', 'PRIORITY'),
+            )
+        )
+    ]
+    mode = models.CharField(max_length=8,
+                            choices=MODE_CATEGORIES,
+                            default='standard',
+                            help_text='Select a mode')
+
+    def __str__(self):
+        return f"{self.region} | {self.locality} | {self.sign} | {self.task}"
