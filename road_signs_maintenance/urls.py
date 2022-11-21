@@ -19,8 +19,6 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='rsm-api/')),
     path('rms-api/', include('rsm_api.urls')),
-    # path('road-signs-repair/', include('road_signs_repair.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
+    path('', RedirectView.as_view(url='rms-api/')),
 ]
