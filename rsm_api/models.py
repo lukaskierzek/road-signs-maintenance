@@ -2,10 +2,11 @@ from django.db import models
 
 
 # Create your models here.
-class Region(models.Model):
+class Area(models.Model):
     name = models.CharField(max_length=100,
-                            help_text="Enter the name of the region where there may be road signs",
-                            verbose_name='Region name')
+                            help_text="Enter the name of the area where there may be road signs",
+                            verbose_name='Area name',
+                            unique=True)
 
     def __str__(self):
         return self.name
@@ -14,11 +15,8 @@ class Region(models.Model):
 class Locality(models.Model):
     name = models.CharField(max_length=100,
                             help_text="Enter the name of locality where there may be road sign",
-                            verbose_name='Locality name')
-
-    region = models.ForeignKey(to=Region,
-                               on_delete=models.SET_NULL,
-                               null=True)
+                            verbose_name='Locality name',
+                            unique=True)
 
     def __str__(self):
         return self.name
@@ -26,7 +24,8 @@ class Locality(models.Model):
 
 class RoadSign(models.Model):
     series = models.CharField(max_length=30,
-                              help_text="Enter a series of the road sign")
+                              help_text="Enter a series of the road sign",
+                              unique=True)
 
     name = models.CharField(max_length=50,
                             help_text="Enter a name of road sign")
@@ -39,9 +38,9 @@ class RoadSign(models.Model):
 
 
 class RoadSignsForRepair(models.Model):
-    region = models.ForeignKey(to=Region,
-                               on_delete=models.SET_NULL,
-                               null=True)
+    area = models.ForeignKey(to=Area,
+                             on_delete=models.SET_NULL,
+                             null=True)
 
     locality = models.ForeignKey(to=Locality,
                                  on_delete=models.SET_NULL,
@@ -79,4 +78,4 @@ class RoadSignsForRepair(models.Model):
                             help_text='Select a mode')
 
     def __str__(self):
-        return f"{self.region} | {self.locality} | {self.sign} | {self.task}"
+        return f"{self.area} | {self.locality} | {self.sign} | {self.task}"
