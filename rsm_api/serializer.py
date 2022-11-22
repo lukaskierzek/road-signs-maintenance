@@ -1,4 +1,4 @@
-from .models import RoadSignsForRepair, Region, RoadSign, Locality
+from .models import RoadSignsForRepair, Area, RoadSign, Locality
 from rest_framework import serializers
 
 
@@ -9,7 +9,7 @@ class RoadSignsForRepairSerializer(serializers.ModelSerializer):
         model = RoadSignsForRepair
         fields = [
             "id",
-            "region",
+            "area",
             "locality",
             "sign",
             "description_of_the_place",
@@ -37,13 +37,13 @@ class LocalitySerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name",
-            "region",
         ]  # All fields
 
 
-class RegionSerializer(serializers.ModelSerializer):
+class AreaSerializer(serializers.ModelSerializer):
+
     class Meta:
-        model = Region
+        model = Area
         fields = [
             "id",
             "name",
