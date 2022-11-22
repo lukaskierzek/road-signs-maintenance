@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
 # Create your views here.
-from .serializer import RoadSignsForRepairSerializer, RoadSignSerializer, LocalitySerializer, RegionSerializer
-from .models import RoadSignsForRepair, Region, RoadSign, Locality
+from .serializer import RoadSignsForRepairSerializer, RoadSignSerializer, LocalitySerializer, AreaSerializer
+from .models import RoadSignsForRepair, Area, RoadSign, Locality
 
 
 class RoadSignsForRepairList(generics.ListCreateAPIView):
@@ -35,11 +35,11 @@ class LocalityDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Locality.objects.all()
 
 
-class RegionList(generics.ListCreateAPIView):
-    serializer_class = RegionSerializer
-    queryset = Region.objects.all()
+class AreaList(generics.ListCreateAPIView):
+    serializer_class = AreaSerializer
+    queryset = Area.objects.all()
 
 
-class RegionDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = RegionSerializer
-    queryset = Region.objects.all()
+class AreaDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = AreaSerializer
+    queryset = Area.objects.all()
