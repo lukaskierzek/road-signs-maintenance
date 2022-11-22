@@ -6,8 +6,8 @@ from .views import (
     RoadSignDetail,
     LocalityList,
     LocalityDetail,
-    RegionList,
-    RegionDetail
+    AreaList,
+    AreaDetail
 )
 
 app_name = 'rsm_api'
@@ -19,6 +19,6 @@ urlpatterns = [
     path('road-signs/<int:pk>', RoadSignDetail.as_view(), name='road_sign_detail'),
     path('locality/', LocalityList.as_view(), name='locality_list'),
     path('locality/<int:pk>', LocalityDetail.as_view(), name='locality_detail'),
-    path('region/', RegionList.as_view(), name='region_list'),
-    path('region/<int:pk>', RegionDetail.as_view(), name='region_detail'),
+    path('area/', AreaList.as_view(), name='area_list'),
+    path('area/<int:pk>', AreaDetail.as_view(), name='area_detail'),
 ]
