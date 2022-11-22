@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Locality, RoadSign, RoadSignsForRepair, Region
+from .models import Locality, RoadSign, RoadSignsForRepair, Area
 
 
 # Register your models here.
@@ -11,7 +11,7 @@ class LocalityInline(admin.TabularInline):
     extra = 0
     fields = [
         "name",
-        "region",
+        "area",
     ]
 
 
@@ -19,7 +19,7 @@ class RoadSignsForRepairInline(admin.TabularInline):
     model = RoadSignsForRepair
     extra = 0
     fields = [
-        "region",
+        "area",
         "locality",
         "sign",
         "description_of_the_place",
@@ -32,19 +32,14 @@ class RoadSignsForRepairInline(admin.TabularInline):
 
 @admin.register(Locality)
 class LocalityAdmin(admin.ModelAdmin):
-    list_display = ("__str__",
-                    "region",)
-
-    list_filter = ("region",)
+    list_display = ("__str__",)
 
     search_fields = [
         "name",
-        "region__name",
     ]
 
     fieldsets = [
         (None, {'fields': ['name']}),
-        ('Region', {'fields': ['region']}),
     ]
 
     inlines = [RoadSignsForRepairInline]
@@ -70,7 +65,7 @@ class RoadSignAdmin(admin.ModelAdmin):
 @admin.register(RoadSignsForRepair)
 class RoadSignsForRepairAdmin(admin.ModelAdmin):
     list_display = ("__str__",
-                    "region",
+                    "area",
                     "locality",
                     "sign",
                     "description_of_the_place",
@@ -79,7 +74,7 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
                     "report_date",
                     "repair_date",)
 
-    list_filter = ("region",
+    list_filter = ("area",
                    "locality",
                    "sign",
                    "task",
@@ -89,18 +84,18 @@ class RoadSignsForRepairAdmin(admin.ModelAdmin):
 
     search_fields = [
         "description_of_the_place",
-        "region",
+        "area",
         "sign",
         "mode",
     ]
 
 
-@admin.register(Region)
-class RegionAdmin(admin.ModelAdmin):
+@admin.register(Area)
+class AreaAdmin(admin.ModelAdmin):
     list_display = ("__str__",)
 
     list_filter = ("name",)
 
     search_fields = ["name", ]
 
-    inlines = [LocalityInline, RoadSignsForRepairInline]
+    inlines = [RoadSignsForRepairInline]
