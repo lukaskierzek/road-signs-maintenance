@@ -40,14 +40,17 @@ class RoadSign(models.Model):
 class RoadSignsForRepair(models.Model):
     area = models.ForeignKey(to=Area,
                              on_delete=models.SET_NULL,
+                             related_name='areas',
                              null=True)
 
     locality = models.ForeignKey(to=Locality,
                                  on_delete=models.SET_NULL,
+                                 related_name='localities',
                                  null=True)
 
     sign = models.ForeignKey(to=RoadSign,
                              on_delete=models.SET_NULL,
+                             related_name='signs',
                              null=True)
 
     description_of_the_place = models.TextField(max_length=500,
@@ -78,4 +81,4 @@ class RoadSignsForRepair(models.Model):
                             help_text='Select a mode')
 
     def __str__(self):
-        return f"{self.area} | {self.locality} | {self.sign} | {self.task}"
+        return f"{self.locality} | {self.area} | {self.sign} | {self.task}"
