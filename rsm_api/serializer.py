@@ -21,6 +21,8 @@ class RoadSignsForRepairSerializer(serializers.ModelSerializer):
 
 
 class RoadSignSerializer(serializers.ModelSerializer):
+    signs = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = RoadSign
         fields = [
@@ -28,23 +30,29 @@ class RoadSignSerializer(serializers.ModelSerializer):
             "series",
             "name",
             "description",
+            "signs",
         ]  # All fields
 
 
 class LocalitySerializer(serializers.ModelSerializer):
+    localities = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Locality
         fields = [
             "id",
             "name",
+            "localities",
         ]  # All fields
 
 
 class AreaSerializer(serializers.ModelSerializer):
+    areas = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Area
         fields = [
             "id",
             "name",
+            "areas",
         ]  # All fields
