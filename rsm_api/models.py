@@ -11,6 +11,10 @@ class Area(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Areas'
+
 
 class Locality(models.Model):
     name = models.CharField(max_length=100,
@@ -20,6 +24,10 @@ class Locality(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Localities'
 
 
 class RoadSign(models.Model):
@@ -35,6 +43,10 @@ class RoadSign(models.Model):
 
     def __str__(self):
         return self.series
+
+    class Meta:
+        ordering = ['series']
+        verbose_name_plural = 'Road signs'
 
 
 class RoadSignsForRepair(models.Model):
@@ -82,3 +94,7 @@ class RoadSignsForRepair(models.Model):
 
     def __str__(self):
         return f"{self.locality} | {self.area} | {self.sign} | {self.task}"
+
+    class Meta:
+        ordering = ['mode', 'report_date', 'repair_date']
+        verbose_name_plural = 'Road signs for repair'
