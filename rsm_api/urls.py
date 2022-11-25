@@ -9,6 +9,7 @@ from .views import (
     AreaList,
     AreaDetail
 )
+from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'rsm_api'
 
@@ -22,3 +23,5 @@ urlpatterns = [
     path('area/', AreaList.as_view(), name='area_list'),
     path('area/<int:pk>', AreaDetail.as_view(), name='area_detail'),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
